@@ -13,22 +13,25 @@ html{
 
 /* custom scroll bar */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background:rgba(75, 74, 74, 0.5);
+    border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: crimson;
+    border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: crimson;
 }
 
 /* all similar content styling codes */
 section{
     padding: 100px 0;
+    box-sizing: border-box;
 }
 .max-width{
     max-width: 1300px;
@@ -59,7 +62,7 @@ section .title{
 section .title::before{
     content: "";
     position: absolute;
-    bottom: 0px;
+    bottom: 0%;
     left: 50%;
     width: 180px;
     height: 3px;
@@ -68,7 +71,7 @@ section .title::before{
 }
 section .title::after{
     position: absolute;
-    bottom: -8px;
+    bottom: -15%;
     left: 50%;
     font-size: 20px;
     color: crimson;
@@ -80,14 +83,17 @@ section .title::after{
 /* navbar styling */
 .navbar{
     position: fixed;
-    width: 100%;
-    z-index: 999;
-    padding: 30px 0;
+    width: 100vw;
+    z-index: 9;
+    padding:0 3%;
     font-family: 'Ubuntu', sans-serif;
     transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .navbar.sticky{
-    padding: 15px 0;
+    padding: 0.5% 3%;
     background: crimson;
 }
 .navbar .max-width{
@@ -107,59 +113,35 @@ section .title::after{
 .navbar.sticky .logo a span{
     color: #fff;
 }
-.navbar .menu li{
-    list-style: none;
-    display: inline-block;
-}
-.navbar .menu li a{
-    display: block;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 500;
-    margin-left: 25px;
-    transition: color 0.3s ease;
-}
-.navbar .menu li a:hover{
-    color: crimson;
-}
-.navbar.sticky .menu li a:hover{
-    color: #fff;
-}
 
 /* menu btn styling */
 .menu-btn{
+    z-index: 999;
     color: #fff;
     font-size: 23px;
     cursor: pointer;
     display: none;
+    /* position: absolute; */
 }
-.scroll-up-btn{
-    position: fixed;
-    height: 45px;
-    width: 42px;
-    background: crimson;
-    right: 30px;
-    bottom: 10px;
-    text-align: center;
-    line-height: 45px;
-    color: #fff;
-    z-index: 9999;
-    font-size: 30px;
-    border-radius: 6px;
-    border-bottom-width: 2px;
-    cursor: pointer;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
+@media(max-width:610px){
+    .maint {
+        position: absolute;
+        right: 0;
+        transform: translateX(100%) translateY(20%);
+        transition: 0.5s ease-in;
+        z-index: 100;
+        display: none;
+      }
+    
+    .menu-btn{
+        display: block;
+        z-index: 999;
+    }
+    .menu-btn i.active:before{
+        content: "\f00d";
+    }
 }
-.scroll-up-btn.show{
-    bottom: 30px;
-    opacity: 1;
-    pointer-events: auto;
-}
-.scroll-up-btn:hover{
-    filter: brightness(90%);
-}
+
 
 /* home section styling */
 .home{
@@ -168,7 +150,7 @@ section .title::after{
     color: #fff;
     min-height: 500px;
     background-size: cover;
-    background: url("https://zippy-glowing-amaranthus.glitch.me/images/background.jpg");
+    background: url("website-startups.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -179,12 +161,12 @@ section .title::after{
     margin: auto 0 auto 30px;
 }
 .home .home-content .text-1{
-    font-size: 27px;
+    font-size: 30px;
 }
 .home .home-content .text-2{
     font-size: 75px;
     font-weight: 600;
-    margin-left: -3px;
+    margin-left: -1%;
 }
 .home .home-content .text-3{
     font-size: 40px;
@@ -194,24 +176,7 @@ section .title::after{
     color: crimson;
     font-weight: 500;
 }
-.home .home-content a{
-    display: inline-block;
-    background: crimson;
-    color: #fff;
-    font-size: 25px;
-    padding: 12px 36px;
-    margin-top: 20px;
-    font-weight: 400;
-    border-radius: 6px;
-    border: 2px solid crimson;
-    transition: all 0.3s ease;
-}
-.home .home-content a:hover{
-    color: crimson;
-    background: none;
-}
 
-/*social*/
 .social ul {
     position:absolute;
     top:100%;
@@ -332,27 +297,55 @@ section .title::after{
 .social ul li:hover:nth-child(4) a:after{
     background: #36454f;
 }
-
 @media only screen and (max-width: 512px) {
-    .social ul li a, .social ul li a:before, .social ul li a:after {
-        display: none;
+    .social ul li a {
+        width:125px;
+        height:40px;
+    }
+    .social ul li a .fab {
+        font-size: 20px;
+        color: #DC0000;
+        line-height:40px;
+        padding-right: 7px;
+    }
+ 
+    .social ul li a span {
+        font-size: 12px;
+        top: 15px;
+        letter-spacing:1.5px;
+    }
+ 
+    .social ul li a:before {
+        top:5px;
+        left:-10px;
+        width:10px;
+    }
+    .social ul li a:after {
+        bottom:-10px;
+        left:-5px;
+        height:10px;
     }
 }
-
+#quote{
+    margin-top: 3%;
+    line-height: 30px;
+    letter-spacing: 2px;
+}
 
 /* about section styling */
+/* .about{background-color: turquoise;} */
 .about .title{
     margin-top: 100px;
 }
 .about .title::after{
-    content: "who i am";
+    content: "Know me better";
 }
 .about .about-content .left{
     width: 45%;
 }
 .about .about-content .left img{
-    height: 400px;
-    width: 400px;
+    /* height: 50%; */
+    width: 90%;
     object-fit: cover;
     border-radius: 6px;
 }
@@ -360,7 +353,7 @@ section .title::after{
     width: 55%;
 }
 .about .about-content .right .text{
-    font-size: 25px;
+    font-size: 23px;
     font-weight: 600;
     margin-bottom: 10px;
 }
@@ -554,7 +547,7 @@ section .title::after{
 
 /* skills section styling */
 .skills .title::after{
-    content: "what i know";
+    content: "Skills";
 }
 .skills .skills-content .column{
     width: calc(50% - 30px);
@@ -611,25 +604,25 @@ section .title::after{
     background: crimson;
 }
 .skills-content .right .html::before{
-    width: 90%;
+    width: 95%;
 }
 .skills-content .right .css::before{
-    width: 60%;
+    width: 95%;
 }
-.skills-content .right .js::before{
-    width: 70%;
+.skills-content .right .javascript::before{
+    width: 90%;
 }
 .skills-content .right .reactjs::before{
-    width: 65%;
+    width: 85%;
 }
-.skills-content .right .firebase::before{
-    width: 70%;
-}
-.skills-content .right .python::before{
-    width: 60%;
+.skills-content .right .Github::before{
+    width: 75%;
 }
 .skills-content .right .nodejs::before{
     width: 70%;
+}
+.skills-content .right .MySql::before{
+    width: 60%;
 }
 /* .skills-content .right .cpp::before{
     width: 60%;
@@ -706,7 +699,7 @@ section .title::after{
 
 /* contact section styling */
 .contact .title::after{
-    content: "get in touch";
+    content: "Interact";
 }
 .contact .contact-content .column{
     width: calc(50% - 30px);
@@ -804,7 +797,7 @@ section .title::after{
 /* footer section styling */
 footer{
     background: #111;
-    padding: 15px 23px;
+    padding: 1% 0%;
     color: #fff;
     text-align: center;
 }
@@ -816,20 +809,25 @@ footer span a:hover{
     text-decoration: underline;
 }
 
+.actual{
+    transform: translateX(70%) translateY(5%);
+    display: block;
+}
 
 /* responsive media query start */
+
 @media (max-width: 1300px) {
     .home .max-width{
         margin-left: 0px;
     }
 }
 
-@media (max-width: 1104px) {
+/* @media (max-width: 1104px) {
     .about .about-content .left img{
         height: 350px;
         width: 350px;
-    }
-}
+    } */
+
 
 @media (max-width: 991px) {
     .max-width{
@@ -837,14 +835,8 @@ footer span a:hover{
     }
 }
 @media (max-width: 947px){
-    .menu-btn{
-        display: block;
-        z-index: 999;
-    }
-    .menu-btn i.active:before{
-        content: "\f00d";
-    }
-    .navbar .menu{
+    
+    .navbar .tabl-ink{
         position: fixed;
         height: 100vh;
         width: 100%;
@@ -855,13 +847,10 @@ footer span a:hover{
         padding-top: 80px;
         transition: all 0.3s ease;
     }
-    .navbar .menu.active{
+    .navbar .tabl-ink.active{
         left: 0;
-    }
-    .navbar .menu li{
-        display: block;
-    }
-    .navbar .menu li a{
+    }a
+    .navbar .tabl-ink li a{
         display: inline-block;
         margin: 20px 0;
         font-size: 25px;
@@ -937,12 +926,16 @@ footer span a:hover{
     .contact .right form .email{
         margin: 0;
     }
-    .scroll-up-btn{
-        right: 15px;
-        bottom: 15px;
-        height: 38px;
-        width: 35px;
-        font-size: 23px;
-        line-height: 38px;
+}
+@media (max-width: 370px) {
+    section .title::before{
+        bottom: -20%;
+      
     }
+    section .title::after{
+        bottom: -50%;
+    
+    }
+
+
 }
